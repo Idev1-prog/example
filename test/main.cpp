@@ -1,5 +1,7 @@
 #include <iostream>
 void main() {
-	std::cout << "Hellow world" << std::endl;
-	std::cout << "New" << std::endl;
+	double a, h, S;
+	std::cin >> a >> h;
+	S = 0.5 * a * h;
+	std::cout << S;
 }
