@@ -1,9 +1,11 @@
 #include <iostream>
+#include "Triangle.h"
 void main() {
-	double a, h, S;
+	Triangle triangle;
+	double a, h;
 	std::cout << "Enter the width and height (example: 1 3): ";
 	std::cin >> a >> h;
-	S = 0.5 * a * h;
-	std::cout << "Area: ";
-	std::cout << S;
+	triangle.set_hight(h);
+	triangle.set_side(a);
+	std::cout << "Area: " << triangle.calculate_area();
 }
