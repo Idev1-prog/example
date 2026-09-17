@@ -40,3 +40,26 @@ TEST(ExceptionsTests, InvalidSwichDataTest) {
 	EXPECT_ANY_THROW(test.set_side(-5142));
 	EXPECT_ANY_THROW(test.set_hight(0));
 }
+TEST(ConstructorEdgeCasesTests, ExtremeSmallPositiveValues) {
+	EXPECT_NO_THROW(Triangle test(1e-10f, 1e-10f));
+	EXPECT_NO_THROW(Triangle test(1e-30f, 5.0f));
+	EXPECT_NO_THROW(Triangle test(1e-38f, 1e-38f));
+}
+TEST(ConstructorEdgeCasesTests, ExtremeLargePositiveValues) {
+	EXPECT_NO_THROW(Triangle test(1e10f, 1e10f));
+	EXPECT_NO_THROW(Triangle test(1e30f, 1e37f));
+}
+TEST(ConstructorEdgeCasesTests, ZeroValuesInvalid) {
+	EXPECT_ANY_THROW(Triangle test(0.0f, 10.0f));
+	EXPECT_ANY_THROW(Triangle test(10.0f, 0.0f));
+	EXPECT_ANY_THROW(Triangle test(0.0f, 0.0f));
+}
+TEST(ConstructorEdgeCasesTests, NegativeValuesInvalid) {
+	EXPECT_ANY_THROW(Triangle test(-1e-10f, 10.0f));
+	EXPECT_ANY_THROW(Triangle test(10.0f, -1e-10f));
+
+	EXPECT_ANY_THROW(Triangle test(-1e30f, 10.0f));
+	EXPECT_ANY_THROW(Triangle test(10.0f, -1e30f));
+
+	EXPECT_ANY_THROW(Triangle test(-1e37f, 1e37f));
+}
